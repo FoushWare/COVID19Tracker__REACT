@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <span style="color:red">
 <h1>Covid-19-tracker</h1>
 </span>
@@ -6,41 +8,64 @@
   <img alt="Covid19appTracker" src="./covid19tracker.jpg" width="80%">
 </p>
 
-Visit the App Here [Covid__19__Tracker]()
+Visit the App Here [Covid**19**Tracker]()
 
+<span style="color:green">
+<h1>Shows</h1>
+</span>
 
-## Apis used 
+> Cases
+
+1. coronavirus cases
+2. Recoverd cases
+3. Death cases
+
+> Map
+> that show marks like google map marks showing the cases in specific countries
+
+> Live Cases By Countries
+
+> Live world wide new cases
+
+<span style="color:green">
+<h1>Apis used </h1>
+</span>
 
 1. [disease.sh - Open Disease Data]
-2. leaflet  [ https://leafletjs.com/]an open-source JavaScript library for mobile-friendly interactive maps
+2. leaflet [ https://leafletjs.com/]an open-source JavaScript library for mobile-friendly interactive maps
 
+<span style="color:green">
+<h1>Deployment </h1>
+</span>
 
-### Deployment
-- [X]  Wireframe of the project
+- [x] Wireframe of the project
 - [x] set up (create react app )
-- [x] cleanup the project 
-- [ ] structure of covide Tracker [coding structures and specifying the component and where to go from one component the the other
-- [ ] Create the Header 
+- [x] cleanup the project
+- [x] Firebase App ( )
+- [x] structure of covide Tracker [coding structures and specifying the component and where to go from one component the the other
+- [x] Create the Header
 - [ ] create the info boxes
-- [ ] Create Map 
+- [ ] Create Map
 - [ ] Styling [Material UI]
 - [ ] Deploy
- 
 
-### Some Details
+<span style="color:#ffea00">
+<h1>Some Details </h1>
+</span>
 
-* Wireframe 
+- Wireframe
 
 <p align="center">
   <img alt="Covid19appTracker" src="./covide19wireframe.png" width="80%">
 </p>
 
-## Technologies && Libraries
-
+<span style="color:#ffea00">
+<h1>Technologies && Libraries </h1>
+</span>
+- firebase
 - MaterialUiIcons
 - React-router
 - Link so no need to refresh the page when use hyperlink
-
 
 ## Available Scripts
 
