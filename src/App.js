@@ -2,11 +2,29 @@ import React, { useState, useEffect } from "react";
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import './App.css';
 import InfoBox from "./InfoBox/InfoBox";
+import { prettyPrintStat } from './Utils';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setInputCountry] = useState("worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
+  const [casesType, setCasesType] = useState("cases");
 
+
+
+
+  // Get the default Info if the worldWide selected 
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      })
+  }, [])
+
+
+
+  // Get all countries to populate the dropdown menu with it's value
   useEffect(() => {
 
     fetch("https://disease.sh/v3/covid-19/countries")
@@ -20,18 +38,30 @@ function App() {
         }))
         setCountries(countries);
         console.log("countries is : ", countries);
-
-
       })
+  }, []);
 
-
-
-  }, [])
+  // when the user change the country from the dropdown menu 
+  //... update the menu with the selected country and
+  //... change the url to fetch the info cases related to the user choice 
 
   const onCountryChange = async (e) => {
     const countryCode = e.target.value;
     console.log("country is : ", countryCode);
-    setInputCountry(countryCode);
+    const url =
+      countryCode === "worldwide" ?
+        "https://disease.sh/v3/covid-19/all" :
+        `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+        setInputCountry(countryCode);
+
+      })
+
   }
 
   return (
@@ -76,25 +106,32 @@ function App() {
         <div className="app__stats">
 
           <InfoBox
+            onClick={(e) => setCasesType("cases")}
             title="coronaviruscases"
-            cases="20"
-            total="30"
+            cases={prettyPrintStat(countryInfo.todayCases)}
+            total={countryInfo.cases}
             isRed
+            active={casesType === "cases"}
 
           />
           <InfoBox
+            onClick={(e) => setCasesType("recovered")}
             title="recoverd"
-            cases="10"
-            total="20"
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
+            total={countryInfo.todayCases}
+            active={casesType === "recovered"}
 
           />
           <InfoBox
+            onClick={(e) => setCasesType("deaths")}
             title="deaths"
-            cases="5"
-            total="10"
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
+            total={countryInfo.deaths}
             isRed
+            active={casesType === "deaths"}
 
           />
+          {console.log("case is ", casesType)}
         </div>
       </div>
       {/* InfoBoxes */}

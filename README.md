@@ -49,6 +49,65 @@ Visit the App Here [Covid**19**Tracker]()
 - [ ] Styling [Material UI]
 - [ ] Deploy
 
+<span style="color:#e84545">
+<h2> Scenario </h1>
+</span>
+
+The user will select worldwide or <span style="color:#387c6d">Other country</span>
+
+1. First scenario (worldwide) the app will call the api (disease.sh)
+
+> Request :
+
+    `https://disease.sh/v3/covid-19/all`
+
+> Response :
+
+`{ "updated": 1616252972727, "cases": 123074456, "todayCases": 194134, "deaths": 2715915, "todayDeaths": 2925, "recovered": 99175869, "todayRecovered": 121223, "active": 21182672, "critical": 89579, "casesPerOneMillion": 15789, "deathsPerOneMillion": 348.4, "tests": 1786406484, "testsPerOneMillion": 228637.83, "population": 7813258510, "oneCasePerPeople": 0, "oneDeathPerPeople": 0, "oneTestPerPeople": 0, "activePerOneMillion": 2711.12, "recoveredPerOneMillion": 12693.28, "criticalPerOneMillion": 11.46, "affectedCountries": 221 }`
+
+2. Second scenario (e.g EGYPT) the app will call the api (disease.sh)
+
+> Request :
+
+    `https://disease.sh/v3/covid-19/countries/egypt?strict=true`
+
+> Response :
+
+     {
+      "updated": 1616267975422,
+      "country": "Egypt",
+      "countryInfo": {
+        "_id": 818,
+        "iso2": "EG",
+        "iso3": "EGY",
+        "lat": 27,
+        "long": 30,
+        "flag": "https://disease.sh/assets/img/flags/eg.png"
+      },
+      "cases": 194127,
+      "todayCases": 0,
+      "deaths": 11512,
+      "todayDeaths": 0,
+      "recovered": 149256,
+      "todayRecovered": 0,
+      "active": 33359,
+      "critical": 90,
+      "casesPerOneMillion": 1872,
+      "deathsPerOneMillion": 111,
+      "tests": 1000000,
+      "testsPerOneMillion": 9643,
+      "population": 103704867,
+      "continent": "Africa",
+      "oneCasePerPeople": 534,
+      "oneDeathPerPeople": 9008,
+      "oneTestPerPeople": 104,
+      "activePerOneMillion": 321.67,
+      "recoveredPerOneMillion": 1439.24,
+      "criticalPerOneMillion": 0.87
+    }
+
+3. After all of this : i get all these infos and pass it to my components [infoBoxes] to update the app
+
 <span style="color:#ffea00">
 <h1>Some Details </h1>
 </span>
@@ -78,3 +137,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+```
+
+```

@@ -4,8 +4,11 @@ import "./InfoBox.css";
 function InfoBox({ title, cases, total, isRed, active, ...props }) {
     return (
         // eslint-disable-next-line react/jsx-no-duplicate-props
-        <Card className="infoBox" className={`infoBox ${active && "infoBox--selected"} ${isRed && "infoBox--red"
-            }`}>
+        <Card
+            onClick={props.onClick}
+            className={`infoBox ${active && "infoBox--selected"} ${isRed && "infoBox--red"
+                }`}
+        >
             <CardContent>
                 <Typography color="textSecondary" gutterBottom>
                     {title}
