@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import './App.css';
 import InfoBox from "./InfoBox/InfoBox";
-import { prettyPrintStat } from './Utils';
+import { prettyPrintStat, sortData } from './Utils';
+import { Card, CardContent } from "@material-ui/core";
+import Table from './CasesTable/Table';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setInputCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [casesType, setCasesType] = useState("cases");
+  const [tableData, setTableData] = useState([]);
+
+
 
 
 
@@ -27,18 +32,26 @@ function App() {
   // Get all countries to populate the dropdown menu with it's value
   useEffect(() => {
 
-    fetch("https://disease.sh/v3/covid-19/countries")
-      .then((response) => response.json())
-      .then((data) => {
+    const getContriesData = async () => {
+      await fetch("https://disease.sh/v3/covid-19/countries")
+        .then((response) => response.json())
+        .then((data) => {
 
-        const countries = data.map((country) => ({
-          name: country.country,
-          value: country.countryInfo.iso2,
+          const countries = data.map((country) => ({
+            name: country.country,
+            value: country.countryInfo.iso2,
 
-        }))
-        setCountries(countries);
-        console.log("countries is : ", countries);
-      })
+          }))
+          // Sorting the cases decending 
+          let sortedData = sortData(data);
+          setTableData(sortedData);
+
+          setCountries(countries);
+          console.log("countries is : ", countries);
+        })
+    }
+    getContriesData();
+
   }, []);
 
   // when the user change the country from the dropdown menu 
@@ -137,13 +150,21 @@ function App() {
       {/* InfoBoxes */}
       {/* InfoBoxes */}
       {/* InfoBoxes */}
-      <div className="app__right">
+      {/* Map */}
+      <Card className="app__right">
+        <CardContent>
+          <div className="app__information">
+            <h3>Live Cases by Country</h3>
+            <Table countries={tableData} />
+            <h3>Worldwide new {casesType}</h3>
+            {/* <LineGraph casesType={casesType} /> */}
+          </div>
+        </CardContent>
 
         {/* Table of countries  */}
         {/* graph */}
 
-        {/* Map */}
-      </div>
+      </Card>
 
     </div>
   );

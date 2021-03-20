@@ -44,7 +44,9 @@ Visit the App Here [Covid**19**Tracker]()
 - [x] Firebase App ( )
 - [x] structure of covide Tracker [coding structures and specifying the component and where to go from one component the the other
 - [x] Create the Header
-- [ ] create the info boxes
+- [x] create the info boxes
+- [x] Table Show all countries and corona total corona cases in it
+- [ ]Line Graph to show the cases as chart
 - [ ] Create Map
 - [ ] Styling [Material UI]
 - [ ] Deploy
