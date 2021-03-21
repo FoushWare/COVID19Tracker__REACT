@@ -46,7 +46,7 @@ Visit the App Here [Covid**19**Tracker]()
 - [x] Create the Header
 - [x] create the info boxes
 - [x] Table Show all countries and corona total corona cases in it
-- [ ]Line Graph to show the cases as chart
+- [x] Line Graph to show the cases as chart
 - [ ] Create Map
 - [ ] Styling [Material UI]
 - [ ] Deploy

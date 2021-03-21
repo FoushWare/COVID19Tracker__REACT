@@ -5,6 +5,7 @@ import InfoBox from "./InfoBox/InfoBox";
 import { prettyPrintStat, sortData } from './Utils';
 import { Card, CardContent } from "@material-ui/core";
 import Table from './CasesTable/Table';
+import LineGraph from './LineGraph/LineGraph';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -157,7 +158,7 @@ function App() {
             <h3>Live Cases by Country</h3>
             <Table countries={tableData} />
             <h3>Worldwide new {casesType}</h3>
-            {/* <LineGraph casesType={casesType} /> */}
+            <LineGraph casesType={casesType} />
           </div>
         </CardContent>
 
