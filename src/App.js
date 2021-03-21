@@ -6,6 +6,8 @@ import { prettyPrintStat, sortData } from './Utils';
 import { Card, CardContent } from "@material-ui/core";
 import Table from './CasesTable/Table';
 import LineGraph from './LineGraph/LineGraph';
+import Map from './Map/Map';
+
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -14,7 +16,9 @@ function App() {
   const [casesType, setCasesType] = useState("cases");
   const [tableData, setTableData] = useState([]);
 
-
+  const [mapCountries, setMapCountries] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
 
 
 
@@ -46,7 +50,7 @@ function App() {
           // Sorting the cases decending 
           let sortedData = sortData(data);
           setTableData(sortedData);
-
+          setMapCountries(data);
           setCountries(countries);
           console.log("countries is : ", countries);
         })
@@ -73,6 +77,8 @@ function App() {
       .then((data) => {
         setCountryInfo(data);
         setInputCountry(countryCode);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
 
       })
 
@@ -145,8 +151,17 @@ function App() {
             active={casesType === "deaths"}
 
           />
+
+
           {console.log("case is ", casesType)}
         </div>
+        <Map
+          countries={mapCountries}
+          casesType={casesType}
+          center={mapCenter}
+          zoom={mapZoom}
+        />
+
       </div>
       {/* InfoBoxes */}
       {/* InfoBoxes */}

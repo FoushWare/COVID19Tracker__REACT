@@ -47,8 +47,8 @@ Visit the App Here [Covid**19**Tracker]()
 - [x] create the info boxes
 - [x] Table Show all countries and corona total corona cases in it
 - [x] Line Graph to show the cases as chart
-- [ ] Create Map
-- [ ] Styling [Material UI]
+- [x] Create Map
+- [x] Styling [Material UI]
 - [ ] Deploy
 
 <span style="color:#e84545">
