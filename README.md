@@ -8,7 +8,7 @@
   <img alt="Covid19appTracker" src="./covid19tracker.jpg" width="80%">
 </p>
 
-Visit the App Here [Covid**19**Tracker]()
+Visit the App Here [Covid**19**Tracker](https://covid19-tracker-e4259.web.app/)
 
 <span style="color:green">
 <h1>Shows</h1>
@@ -49,7 +49,7 @@ Visit the App Here [Covid**19**Tracker]()
 - [x] Line Graph to show the cases as chart
 - [x] Create Map
 - [x] Styling [Material UI]
-- [ ] Deploy
+- [x] Deploy
 
 <span style="color:#e84545">
 <h2> Scenario </h1>
